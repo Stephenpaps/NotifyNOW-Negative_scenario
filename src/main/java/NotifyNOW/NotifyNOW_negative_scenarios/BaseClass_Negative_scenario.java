@@ -17,7 +17,10 @@ public class BaseClass_Negative_scenario {
 	public String baseurl = "https://dev.notifynow.uk/login";
 	public String loginemail = "stephen@yopmail.com";
 	public String loginpwd = "Stephen123@";
-
+	public String date = Integer.toString(randomdate());
+	public String month = Integer.toString(randommonth());
+	public String birthyear = Integer.toString(randomBirthYear());
+	public String deathyear = Integer.toString(randomdeathYear());
 	@BeforeTest
 	public void Browsersetup() {
 		WebDriverManager.chromedriver().setup();
@@ -91,6 +94,8 @@ public class BaseClass_Negative_scenario {
 		return result;
 
 	}
+	
+	
 
 	@Test(priority = 1)
 	public void callmethod1() throws InterruptedException {
@@ -99,5 +104,11 @@ public class BaseClass_Negative_scenario {
 		s1.Step1_ns();
 
 	}
-
+	
+	@Test(priority = 2)
+	public void callmethod2() throws InterruptedException {
+		Step2_NS s2= new Step2_NS();
+		s2.Step2();
+		
+	}
 }

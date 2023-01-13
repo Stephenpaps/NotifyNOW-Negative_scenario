@@ -51,6 +51,7 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 		WebElement reqerrmsgcontact = driver.findElement(By.xpath("//*[@id=\'contact_alert\']"));
 		WebElement reqrmsgrelation = driver.findElement(By.xpath("//*[@id=\'stepOne\']/div/div[9]/div/p"));
 		WebElement reqmsgformid = driver.findElement(By.xpath("//*[@id=\"addrow1\"]/div/div[1]/div/p"));
+		WebElement Zipcode = driver.findElement(By.id("zipcode"));
 
 		if (addrrequrrmsg.isDisplayed()) {
 
@@ -65,7 +66,16 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 			streetaddrss.sendKeys(Keys.ENTER);
 
 			Thread.sleep(3000);
-
+			
+			System.out.println(Zipcode.getText());
+			if (Zipcode.getText().isEmpty()) {
+				Zipcode.sendKeys(generateRandomString(6));
+			} else {
+				System.out.println("Zipcode exists");
+			}
+			
+			Thread.sleep(3000);
+			
 			if (phnnmbrerr.isDisplayed()) {
 				phonenmbr.sendKeys(generateRandomString(5));
 
@@ -104,10 +114,14 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 				js.executeScript("arguments[0].click()", addrstype.get(addr));
 			}
 
+			
+
 			Thread.sleep(3000);
 
 			js.executeScript("arguments[0].click()", step1submission);
-
+			
+			Thread.sleep(3000);
+			
 			String title = driver.getTitle();
 			if (title.equals("Step two")) {
 				System.out.println("Successfully finished negative scenario and passed step 1.");
