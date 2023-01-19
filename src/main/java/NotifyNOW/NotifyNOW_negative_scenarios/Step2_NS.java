@@ -49,11 +49,11 @@ public class Step2_NS extends Step1_NS {
 			js.executeScript("arguments[0].click()", addrtype.get(addr));
 		}
 		Thread.sleep(3000);
-		
+
 		WebElement rental = driver.findElement(By.id("rental"));
 
 		Thread.sleep(3000);
-		
+
 		if (rental.isSelected()) {
 			WebElement vacating = driver.findElement(By.id("vacating_home_date"));
 			Thread.sleep(3000);
@@ -97,12 +97,12 @@ public class Step2_NS extends Step1_NS {
 		Thread.sleep(3000);
 
 		js.executeScript("arguments[0].click()", submits2);
-		
+
 		Thread.sleep(4000);
-		
+
 		String title = driver.getTitle();
-		
-		if(title.equals("Step three")) {
+
+		if (title.equals("Step three")) {
 			System.out.println("Successfully finished negative scenario and passed step 2.");
 		}
 	}

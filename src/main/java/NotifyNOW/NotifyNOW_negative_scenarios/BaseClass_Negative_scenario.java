@@ -24,7 +24,7 @@ public class BaseClass_Negative_scenario {
 	public String birthyear = Integer.toString(randomBirthYear());
 	public String deathyear = Integer.toString(randomdeathYear());
 	public String directorypath = "/home/stephen/Downloads/";
-	
+
 	@BeforeTest
 	public void Browsersetup() {
 		WebDriverManager.chromedriver().setup();
@@ -47,6 +47,15 @@ public class BaseClass_Negative_scenario {
 
 	public String generateRandomNumber(int len) {
 		String chars = "012345678";
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder(len);
+		for (int i = 0; i < len; i++)
+			sb.append(chars.charAt(rnd.nextInt(chars.length())));
+		return sb.toString();
+	}
+	
+	public String generateRandomspecialchar(int len) {
+		String chars = "!@#$%^&*()_-<>?";
 		Random rnd = new Random();
 		StringBuilder sb = new StringBuilder(len);
 		for (int i = 0; i < len; i++)
@@ -98,11 +107,11 @@ public class BaseClass_Negative_scenario {
 		return result;
 
 	}
-	
-	public static <T> T getRandomElement(T[] arr){
-		   return arr[ThreadLocalRandom.current().nextInt(arr.length)];
-		}
-	
+
+	public static <T> T getRandomElement(T[] arr) {
+		return arr[ThreadLocalRandom.current().nextInt(arr.length)];
+	}
+
 	static int randomddutility() {
 		Random r = new Random();
 		int low = 1;
@@ -111,7 +120,6 @@ public class BaseClass_Negative_scenario {
 		return result;
 
 	}
-	
 
 	@Test(priority = 1)
 	public void callmethod1() throws InterruptedException {
@@ -120,25 +128,25 @@ public class BaseClass_Negative_scenario {
 		s1.Step1_ns();
 
 	}
-	
+
 	@Test(priority = 2)
 	public void callmethod2() throws InterruptedException {
-		Step2_NS s2= new Step2_NS();
+		Step2_NS s2 = new Step2_NS();
 		s2.Step2();
-		
+
 	}
-	
+
 	@Test(priority = 3)
 	public void callmethod3() throws InterruptedException, FileNotFoundException {
-		Step3_NS s3= new Step3_NS();
+		Step3_NS s3 = new Step3_NS();
 		s3.step3_ns();
-		
+
 	}
-	
+
 	@Test(priority = 4)
 	public void callmethod4() throws InterruptedException {
 		Step4_ns s4 = new Step4_ns();
 		s4.step4();
-		
+
 	}
 }

@@ -66,16 +66,16 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 			streetaddrss.sendKeys(Keys.ENTER);
 
 			Thread.sleep(3000);
-			
+
 			System.out.println(Zipcode.getText());
 			if (Zipcode.getText().isEmpty()) {
 				Zipcode.sendKeys(generateRandomString(6));
 			} else {
 				System.out.println("Zipcode exists");
 			}
-			
+
 			Thread.sleep(3000);
-			
+
 			if (phnnmbrerr.isDisplayed()) {
 				phonenmbr.sendKeys(generateRandomString(5));
 
@@ -114,14 +114,12 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 				js.executeScript("arguments[0].click()", addrstype.get(addr));
 			}
 
-			
-
 			Thread.sleep(3000);
 
 			js.executeScript("arguments[0].click()", step1submission);
-			
+
 			Thread.sleep(3000);
-			
+
 			String title = driver.getTitle();
 			if (title.equals("Step two")) {
 				System.out.println("Successfully finished negative scenario and passed step 1.");

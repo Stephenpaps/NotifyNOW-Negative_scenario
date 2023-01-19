@@ -10,19 +10,20 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Step4_ns extends Step3_NS {
 	public String accntdf = generateRandomString(5) + "-" + generateRandomNumber(3);
+
 	public void step4() throws InterruptedException {
 		Thread.sleep(3000);
-		
+
 		WebElement submitstep4 = driver.findElement(By.xpath("//button[@type='submit']"));
 		js.executeScript("arguments[0].click()", submitstep4);
-		
+
 		String title = driver.getTitle();
-		
+
 		Thread.sleep(3000);
-		if(title.equals("Step four")) {
+		if (title.equals("Step four")) {
 			System.out.println("Select one company.");
 		}
-	
+
 		Thread.sleep(3000);
 
 		// Selecting EON next creditor from Dropdown
@@ -37,7 +38,7 @@ public class Step4_ns extends Step3_NS {
 
 		Thread.sleep(3000);
 
-		//Selecting random utility type from the creditor
+		// Selecting random utility type from the creditor
 		WebElement eonnextdd = driver
 				.findElement(By.xpath("//select[@id='asset_type2a01940f-2313-4aca-9914-a84fd15a5f99']"));
 		Select utility = new Select(eonnextdd);
@@ -66,25 +67,25 @@ public class Step4_ns extends Step3_NS {
 
 			Thread.sleep(2000);
 
-			WebElement gasmeterdate = driver.findElement(By.xpath(
-					"//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[3]/div[2]/input"));
+			WebElement gasmeterdate = driver.findElement(By
+					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[3]/div[2]/input"));
 			gasmeterdate.sendKeys(date + month + deathyear);
 
 			Thread.sleep(2000);
 
-			WebElement electricmeterreading = driver.findElement(By.xpath(
-					"//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[1]/input"));
+			WebElement electricmeterreading = driver.findElement(By
+					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[1]/input"));
 			electricmeterreading.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
 
-			WebElement electricmeterdate = driver.findElement(By.xpath(
-					"//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[2]/input"));
+			WebElement electricmeterdate = driver.findElement(By
+					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[2]/input"));
 			electricmeterdate.sendKeys(date + month + deathyear);
 
 			Thread.sleep(2000);
 
-		} 
+		}
 		// if the utility is other than dual fuel
 		else {
 			Thread.sleep(2000);
@@ -130,7 +131,7 @@ public class Step4_ns extends Step3_NS {
 			Random random1 = new Random();
 			int trans = random1.nextInt(transferlist.size());
 			js.executeScript("arguments[0].click()", transferlist.get(trans));
-			
+
 			Thread.sleep(3000);
 			WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
 			js.executeScript("arguments[0].click()", submit);
@@ -140,11 +141,8 @@ public class Step4_ns extends Step3_NS {
 			if (successtoast.isDisplayed()) {
 				System.out.println("Request submitted successfully.");
 			}
+
 		}
 	}
-		
-	
-		
-			
-		
+
 }
