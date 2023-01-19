@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS">
+      <class name="NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns">
         <methods>
-          <include name="callmethod2"/>
           <include name="Browsersetup"/>
+          <include name="callmethod4"/>
         </methods>
-      </class> <!-- NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS -->
+      </class> <!-- NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

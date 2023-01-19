@@ -1,6 +1,8 @@
 package NotifyNOW.NotifyNOW_negative_scenarios;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +23,8 @@ public class BaseClass_Negative_scenario {
 	public String month = Integer.toString(randommonth());
 	public String birthyear = Integer.toString(randomBirthYear());
 	public String deathyear = Integer.toString(randomdeathYear());
+	public String directorypath = "/home/stephen/Downloads/";
+	
 	@BeforeTest
 	public void Browsersetup() {
 		WebDriverManager.chromedriver().setup();
@@ -95,6 +99,18 @@ public class BaseClass_Negative_scenario {
 
 	}
 	
+	public static <T> T getRandomElement(T[] arr){
+		   return arr[ThreadLocalRandom.current().nextInt(arr.length)];
+		}
+	
+	static int randomddutility() {
+		Random r = new Random();
+		int low = 1;
+		int high = 3;
+		int result = r.nextInt(high - low) + low;
+		return result;
+
+	}
 	
 
 	@Test(priority = 1)
@@ -109,6 +125,20 @@ public class BaseClass_Negative_scenario {
 	public void callmethod2() throws InterruptedException {
 		Step2_NS s2= new Step2_NS();
 		s2.Step2();
+		
+	}
+	
+	@Test(priority = 3)
+	public void callmethod3() throws InterruptedException, FileNotFoundException {
+		Step3_NS s3= new Step3_NS();
+		s3.step3_ns();
+		
+	}
+	
+	@Test(priority = 4)
+	public void callmethod4() throws InterruptedException {
+		Step4_ns s4 = new Step4_ns();
+		s4.step4();
 		
 	}
 }

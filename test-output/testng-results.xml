@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-01-14T01:36:16 IST" name="Default suite" finished-at="2023-01-14T01:38:14 IST" duration-ms="118020">
+  <suite started-at="2023-01-19T06:31:12 IST" name="Default suite" finished-at="2023-01-19T06:34:03 IST" duration-ms="171737">
     <groups>
     </groups>
-    <test started-at="2023-01-14T01:36:16 IST" name="Default test" finished-at="2023-01-14T01:38:14 IST" duration-ms="118020">
-      <class name="NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS">
-        <test-method is-config="true" signature="Browsersetup()[pri:0, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS@3b0fe47a]" started-at="2023-01-14T01:36:16 IST" name="Browsersetup" finished-at="2023-01-14T01:36:27 IST" duration-ms="10139" status="PASS">
+    <test started-at="2023-01-19T06:31:12 IST" name="Default test" finished-at="2023-01-19T06:34:03 IST" duration-ms="171737">
+      <class name="NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns">
+        <test-method is-config="true" signature="Browsersetup()[pri:0, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns@74d1dc36]" started-at="2023-01-19T06:31:12 IST" name="Browsersetup" finished-at="2023-01-19T06:31:24 IST" duration-ms="12071" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Browsersetup -->
-        <test-method signature="callmethod1()[pri:1, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS@3b0fe47a]" started-at="2023-01-14T01:36:27 IST" name="callmethod1" finished-at="2023-01-14T01:37:30 IST" duration-ms="63291" status="PASS">
+        <test-method signature="callmethod1()[pri:1, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns@74d1dc36]" started-at="2023-01-19T06:31:24 IST" name="callmethod1" finished-at="2023-01-19T06:32:29 IST" duration-ms="64911" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- callmethod1 -->
-        <test-method signature="callmethod2()[pri:2, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS@3b0fe47a]" started-at="2023-01-14T01:37:30 IST" name="callmethod2" finished-at="2023-01-14T01:38:14 IST" duration-ms="44520" status="PASS">
+        <test-method signature="callmethod2()[pri:2, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns@74d1dc36]" started-at="2023-01-19T06:32:29 IST" name="callmethod2" finished-at="2023-01-19T06:33:20 IST" duration-ms="51035" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- callmethod2 -->
-      </class> <!-- NotifyNOW.NotifyNOW_negative_scenarios.Step2_NS -->
+        <test-method signature="callmethod3()[pri:3, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns@74d1dc36]" started-at="2023-01-19T06:33:20 IST" name="callmethod3" finished-at="2023-01-19T06:33:30 IST" duration-ms="10257" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- callmethod3 -->
+        <test-method signature="callmethod4()[pri:4, instance:NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns@74d1dc36]" started-at="2023-01-19T06:33:30 IST" name="callmethod4" finished-at="2023-01-19T06:34:03 IST" duration-ms="33376" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- callmethod4 -->
+      </class> <!-- NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
