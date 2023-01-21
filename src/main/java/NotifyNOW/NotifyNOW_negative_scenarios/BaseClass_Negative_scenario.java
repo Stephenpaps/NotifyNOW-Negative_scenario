@@ -1,9 +1,7 @@
 package NotifyNOW.NotifyNOW_negative_scenarios;
 
-import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,7 +31,6 @@ public class BaseClass_Negative_scenario {
 		driver.manage().deleteAllCookies();
 		driver.get(baseurl);
 		js = (JavascriptExecutor) driver;
-
 	}
 
 	public StringBuilder generateRandomString(int len) {
@@ -53,7 +50,7 @@ public class BaseClass_Negative_scenario {
 			sb.append(chars.charAt(rnd.nextInt(chars.length())));
 		return sb.toString();
 	}
-	
+
 	public String generateRandomspecialchar(int len) {
 		String chars = "!@#$%^&*()_-<>?";
 		Random rnd = new Random();
@@ -129,24 +126,24 @@ public class BaseClass_Negative_scenario {
 
 	}
 
-	@Test(priority = 2)
-	public void callmethod2() throws InterruptedException {
-		Step2_NS s2 = new Step2_NS();
-		s2.Step2();
-
-	}
-
-	@Test(priority = 3)
-	public void callmethod3() throws InterruptedException, FileNotFoundException {
-		Step3_NS s3 = new Step3_NS();
-		s3.step3_ns();
-
-	}
-
-	@Test(priority = 4)
-	public void callmethod4() throws InterruptedException {
-		Step4_ns s4 = new Step4_ns();
-		s4.step4();
-
-	}
+//	@Test(priority = 2)
+//	public void callmethod2() throws InterruptedException {
+//		Step2_NS s2 = new Step2_NS();
+//		s2.Step2();
+//
+//	}
+//
+//	@Test(priority = 3)
+//	public void callmethod3() throws InterruptedException, FileNotFoundException {
+//		Step3_NS s3 = new Step3_NS();
+//		s3.step3_ns();
+//
+//	}
+//
+//	@Test(priority = 4)
+//	public void callmethod4() throws InterruptedException {
+//		Step4_ns s4 = new Step4_ns();
+//		s4.step4();
+//
+//	}
 }

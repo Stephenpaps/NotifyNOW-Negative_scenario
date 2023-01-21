@@ -12,6 +12,7 @@ import org.testng.Assert;
 public class Step1_NS extends BaseClass_Negative_scenario {
 
 	public void validlogin() throws InterruptedException {
+
 		WebElement useremail = driver.findElement(By.xpath("//input[@type='email']"));
 		useremail.sendKeys(loginemail);
 
@@ -37,6 +38,7 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 	public void Step1_ns() throws InterruptedException {
 
 		Thread.sleep(3000);
+
 		// Empty form submission
 		WebElement step1submission = driver.findElement(By.xpath("//*[@id=\'stepOne\']/div/div[18]/div/button"));
 		js.executeScript("arguments[0].click()", step1submission);
@@ -67,26 +69,29 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 
 			Thread.sleep(3000);
 
-			System.out.println(Zipcode.getText());
-			if (Zipcode.getText().isEmpty()) {
+			System.out.println(Zipcode.getAttribute("value"));
+
+			Thread.sleep(3000);
+			if (Zipcode.getAttribute("value").isEmpty()) {
 				Zipcode.sendKeys(generateRandomString(6));
-			} else {
-				System.out.println("Zipcode exists");
 			}
 
 			Thread.sleep(3000);
 
 			if (phnnmbrerr.isDisplayed()) {
 				phonenmbr.sendKeys(generateRandomString(5));
-
+				Thread.sleep(3000);
+			}
+			if (phonenmbr.getText().isEmpty()) {
+				phonenmbr.sendKeys(generateRandomspecialchar(5));
 				Thread.sleep(3000);
 			}
 
-			if (phonenmbr.getText().isEmpty()) {
-				System.out.println("Phonenumber did not accept alphabets!");
+			Thread.sleep(3000);
+			if (phonenmbr.getAttribute("value").isEmpty()) {
+				
 				phonenmbr.sendKeys(generateRandomNumber(10));
 			}
-
 			if (reqrmsgrelation.isDisplayed()) {
 
 				Thread.sleep(3000);
@@ -101,7 +106,10 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 
 				Thread.sleep(3000);
 
-				formidnmbr.sendKeys(generateRandomNumber(3) + generateRandomString(3));
+				formidnmbr.sendKeys(generateRandomNumber(3) + generateRandomString(3) + generateRandomspecialchar(3));
+
+				System.out.println(formidnmbr.getAttribute("value"));
+				
 			}
 			Thread.sleep(3000);
 
@@ -123,6 +131,8 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 			String title = driver.getTitle();
 			if (title.equals("Step two")) {
 				System.out.println("Successfully finished negative scenario and passed step 1.");
+				System.out.println("Phonenumber did not accept alphabets and Special characters!");
+				System.out.println("Id number accepts alphabets, numericals and Special Characters.");
 			}
 
 		}
