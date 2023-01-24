@@ -5,9 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass_Negative_scenario {
@@ -25,8 +25,10 @@ public class BaseClass_Negative_scenario {
 
 	@BeforeTest
 	public void Browsersetup() {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("use-fake-ui-for-media-stream");
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.get(baseurl);
@@ -52,7 +54,7 @@ public class BaseClass_Negative_scenario {
 	}
 
 	public String generateRandomspecialchar(int len) {
-		String chars = "!@#$%^&*()_-<>?";
+		String chars = "!@#$%^*()|<>?";
 		Random rnd = new Random();
 		StringBuilder sb = new StringBuilder(len);
 		for (int i = 0; i < len; i++)
@@ -126,24 +128,24 @@ public class BaseClass_Negative_scenario {
 
 	}
 
-//	@Test(priority = 2)
-//	public void callmethod2() throws InterruptedException {
-//		Step2_NS s2 = new Step2_NS();
-//		s2.Step2();
-//
-//	}
-//
-//	@Test(priority = 3)
-//	public void callmethod3() throws InterruptedException, FileNotFoundException {
-//		Step3_NS s3 = new Step3_NS();
-//		s3.step3_ns();
-//
-//	}
-//
-//	@Test(priority = 4)
-//	public void callmethod4() throws InterruptedException {
-//		Step4_ns s4 = new Step4_ns();
-//		s4.step4();
-//
-//	}
+	@Test(priority = 2)
+	public void callmethod2() throws InterruptedException {
+		Step2_NS s2 = new Step2_NS();
+		s2.Step2();
+
+	}
+
+	@Test(priority = 3)
+	public void callmethod3() throws InterruptedException {
+		Step3_NS s3 = new Step3_NS();
+		s3.step3_ns();
+
+	}
+
+	@Test(priority = 4)
+	public void callmethod4() throws InterruptedException {
+		Step4_ns s4 = new Step4_ns();
+		s4.step4();
+
+	}
 }

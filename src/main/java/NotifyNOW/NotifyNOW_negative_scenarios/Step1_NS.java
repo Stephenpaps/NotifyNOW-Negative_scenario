@@ -57,7 +57,6 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 
 		if (addrrequrrmsg.isDisplayed()) {
 
-			System.out.println("Negative scenario 1 passed !");
 			streetaddrss.sendKeys(generateRandomString(1));
 
 			Thread.sleep(1000);
@@ -68,8 +67,6 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 			streetaddrss.sendKeys(Keys.ENTER);
 
 			Thread.sleep(3000);
-
-			System.out.println(Zipcode.getAttribute("value"));
 
 			Thread.sleep(3000);
 			if (Zipcode.getAttribute("value").isEmpty()) {
@@ -89,7 +86,7 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 
 			Thread.sleep(3000);
 			if (phonenmbr.getAttribute("value").isEmpty()) {
-				
+
 				phonenmbr.sendKeys(generateRandomNumber(10));
 			}
 			if (reqrmsgrelation.isDisplayed()) {
@@ -107,9 +104,6 @@ public class Step1_NS extends BaseClass_Negative_scenario {
 				Thread.sleep(3000);
 
 				formidnmbr.sendKeys(generateRandomNumber(3) + generateRandomString(3) + generateRandomspecialchar(3));
-
-				System.out.println(formidnmbr.getAttribute("value"));
-				
 			}
 			Thread.sleep(3000);
 

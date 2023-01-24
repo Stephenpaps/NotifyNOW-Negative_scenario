@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Step4_ns extends Step3_NS {
 	public String accntdf = generateRandomString(5) + "-" + generateRandomNumber(3);
+	public String accntdf1 = generateRandomspecialchar(5);
+	public String accntdf2 = generateRandomNumber(5);
 
 	public void step4() throws InterruptedException {
 		Thread.sleep(3000);
@@ -33,55 +35,64 @@ public class Step4_ns extends Step3_NS {
 
 		Thread.sleep(3000);
 
-		WebElement eonnextcred = driver.findElement(By.xpath("//div[normalize-space()='Eonnext']"));
+		WebElement eonnextcred = driver.findElement(By.xpath("//div[normalize-space()='Eon NEXT']"));
 		js.executeScript("arguments[0].click()", eonnextcred);
 
 		Thread.sleep(3000);
 
 		// Selecting random utility type from the creditor
-		WebElement eonnextdd = driver
-				.findElement(By.xpath("//select[@id='asset_type2a01940f-2313-4aca-9914-a84fd15a5f99']"));
+		WebElement eonnextdd = driver.findElement(By.xpath("//select[@name='asset_type[]']"));
 		Select utility = new Select(eonnextdd);
 		utility.selectByIndex(randomddutility());
 
 		Thread.sleep(2000);
 
+		WebElement accnt = driver.findElement(By.xpath("//input[@name='utility_account_number[]']"));
+		Thread.sleep(2000);
+		accnt.sendKeys(accntdf1);
+		Thread.sleep(2000);
+		if (accnt.getAttribute("value").isEmpty()) {
+			accnt.sendKeys(accntdf);
+		}
+
+		Thread.sleep(2000);
+
+		WebElement accnt2 = driver.findElement(By.xpath("//input[@name='confirm_utility_account_number[]']"));
+		accnt2.sendKeys(accntdf1);
+		Thread.sleep(2000);
+		if (accnt2.getAttribute("value").isEmpty()) {
+			accnt2.sendKeys(accntdf2);
+		}
+
+		Thread.sleep(2000);
 		// If the utility is Dual fuel
-		if (eonnextdd.getText().equals("Dual-Fuel")) {
-
-			Thread.sleep(2000);
-
-			WebElement dfaccnt = driver.findElement(By.xpath("//input[@name='utility_account_number[]']"));
-			dfaccnt.sendKeys(accntdf);
-
-			Thread.sleep(2000);
-
-			WebElement dfaccnt2 = driver.findElement(By.xpath("//input[@name='confirm_utility_account_number[]']"));
-			dfaccnt2.sendKeys(accntdf);
+		if (eonnextdd.getAttribute("value").equals("Dual-Fuel")) {
 
 			Thread.sleep(2000);
 
 			WebElement gasmeterreading = driver.findElement(By
-					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[3]/div[1]/input"));
+					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[1]/input"));
 			gasmeterreading.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
 
 			WebElement gasmeterdate = driver.findElement(By
-					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[3]/div[2]/input"));
-			gasmeterdate.sendKeys(date + month + deathyear);
+					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[3]/div[2]/input"));
+			gasmeterdate.sendKeys(
+					generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 			Thread.sleep(2000);
 
-			WebElement electricmeterreading = driver.findElement(By
-					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[1]/input"));
+			WebElement electricmeterreading = driver.findElement(
+					By.xpath("//*[@id='1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[1]/input"));
 			electricmeterreading.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
 
 			WebElement electricmeterdate = driver.findElement(By
-					.xpath("//*[@id=\'2a01940f-2313-4aca-9914-a84fd15a5f99\']/div/div[2]/div[2]/div[4]/div[2]/input"));
-			electricmeterdate.sendKeys(date + month + deathyear);
+					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[2]/input"));
+			electricmeterdate.sendKeys(
+					generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 			Thread.sleep(2000);
 
@@ -89,19 +100,13 @@ public class Step4_ns extends Step3_NS {
 		// if the utility is other than dual fuel
 		else {
 			Thread.sleep(2000);
-			WebElement accnt = driver.findElement(By.xpath("//input[@name='utility_account_number[]']"));
-			accnt.sendKeys(accntdf);
-
-			Thread.sleep(2000);
-			WebElement accnt1 = driver.findElement(By.xpath("//input[@name='confirm_utility_account_number[]']"));
-			accnt1.sendKeys(accntdf);
-
 			WebElement cmr = driver.findElement(By.xpath("//input[@name='meter_read[]']"));
 			cmr.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
 			WebElement cmrdate = driver.findElement(By.xpath("//input[@name='meter_read_date[]']"));
-			cmrdate.sendKeys(date + month + deathyear);
+			cmrdate.sendKeys(
+					generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 		}
 
@@ -115,34 +120,66 @@ public class Step4_ns extends Step3_NS {
 
 		Thread.sleep(2000);
 
-		WebElement transferuti = driver
-				.findElement(By.xpath("//input[@id='transfer-utility-0-2a01940f-2313-4aca-9914-a84fd15a5f99']"));
+		WebElement transferuti = driver.findElement(By.xpath("//input[@data-id='0']"));
 
 		Thread.sleep(2000);
 
 		if (transferuti.isSelected()) {
-			WebElement notifiertransfer = driver
-					.findElement(By.xpath("//*[@id=\'notifier-0-2a01940f-2313-4aca-9914-a84fd15a5f99\']"));
-			WebElement ongoingsupplytransfer = driver
-					.findElement(By.xpath("//*[@id=\'other-0-2a01940f-2313-4aca-9914-a84fd15a5f99\']"));
+			System.out.println("Close Account is selected");
+		} else {
+			WebElement notifiertransfer = driver.findElement(By.xpath("//input[@value='Notifier']"));
+			WebElement ongoingsupplytransfer = driver.findElement(By.xpath("//input[@value='Others']"));
 
 			Thread.sleep(2000);
 			List<WebElement> transferlist = Arrays.asList(notifiertransfer, ongoingsupplytransfer);
 			Random random1 = new Random();
 			int trans = random1.nextInt(transferlist.size());
 			js.executeScript("arguments[0].click()", transferlist.get(trans));
+		}
 
-			Thread.sleep(3000);
-			WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
-			js.executeScript("arguments[0].click()", submit);
-			Thread.sleep(3000);
-			WebElement successtoast = driver.findElement(By.xpath("//div[@id='toast-container']"));
+		Thread.sleep(3000);
+		WebElement errcnfmacct = driver
+				.findElement(By.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[2]/p"));
+		if (errcnfmacct.isDisplayed()) {
+			accnt2.clear();
+			accnt2.sendKeys(accntdf);
+			System.out.println("Confirm account number and account number must be equal.");
+		}
+		Thread.sleep(3000);
+		if (eonnextdd.getAttribute("value").equals("Dual-Fuel")) {
 
-			if (successtoast.isDisplayed()) {
-				System.out.println("Request submitted successfully.");
-			}
+			WebElement gasmeterdate = driver.findElement(By
+					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[3]/div[2]/input"));
+			gasmeterdate.clear();
+			Thread.sleep(2000);
+			gasmeterdate.sendKeys(date + month + deathyear);
+
+			WebElement electricmeterdate = driver.findElement(By
+					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[2]/input"));
+			electricmeterdate.clear();
+			Thread.sleep(3000);
+			electricmeterdate.sendKeys(date + month + deathyear);
+			Thread.sleep(2000);
+
+		} else {
+			WebElement cmrdate = driver.findElement(By.xpath("//input[@name='meter_read_date[]']"));
+			cmrdate.clear();
+			Thread.sleep(3000);
+			cmrdate.sendKeys(date + month + deathyear);
 
 		}
+		System.out.println("Datepicker not accepting special characters and alphabets.");
+		Thread.sleep(3000);
+		WebElement submit = driver.findElement(By.xpath("//button[@type='submit']"));
+		js.executeScript("arguments[0].click()", submit);
+
+		Thread.sleep(3000);
+		WebElement successtoast = driver.findElement(By.xpath("//div[@id='toast-container']"));
+
+		if (successtoast.isDisplayed()) {
+			System.out.println("Request submitted successfully.");
+		}
+
 	}
 
 }

@@ -13,6 +13,7 @@ public class Step2_NS extends Step1_NS {
 	public void Step2() throws InterruptedException {
 
 		Thread.sleep(3000);
+
 		WebElement submits2 = driver.findElement(By.xpath("//button[@type='submit']"));
 		js.executeScript("arguments[0].click()", submits2);
 
@@ -28,8 +29,9 @@ public class Step2_NS extends Step1_NS {
 		WebElement errdepartedFN = driver
 				.findElement(By.xpath("/html/body/div[5]/div/div/div[3]/div/form/div[3]/div[1]/div/p"));
 		WebElement departedFN = driver.findElement(By.xpath("//input[@id='first_name_of_departed']"));
+
 		if (errdepartedFN.isDisplayed()) {
-			departedFN.sendKeys(generateRandomString(5) + "'" + generateRandomString(1));
+			departedFN.sendKeys(generateRandomspecialchar(4));
 		}
 
 		Thread.sleep(3000);
@@ -37,7 +39,7 @@ public class Step2_NS extends Step1_NS {
 				.findElement(By.xpath("/html/body/div[5]/div/div/div[3]/div/form/div[3]/div[2]/div/p"));
 		WebElement departedLN = driver.findElement(By.xpath("//input[@id='last_name_of_departed']"));
 		if (errdepartedLN.isDisplayed()) {
-			departedLN.sendKeys(generateRandomString(5));
+			departedLN.sendKeys(generateRandomspecialchar(5));
 		}
 
 		Thread.sleep(3000);
@@ -72,15 +74,17 @@ public class Step2_NS extends Step1_NS {
 			Thread.sleep(3000);
 		}
 		WebElement dateofbirth = driver.findElement(By.id("date_of_birth"));
-		dateofbirth.sendKeys(date + month + birthyear);
+		dateofbirth
+				.sendKeys(generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 		Thread.sleep(3000);
 		WebElement dateofdeath = driver.findElement(By.id("date_of_death"));
-		dateofdeath.sendKeys(date + month + deathyear);
+		dateofdeath
+				.sendKeys(generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 		Thread.sleep(3000);
 		WebElement presentzipcode = driver.findElement(By.id("present_zipcode"));
-		if (presentzipcode.getText().isEmpty()) {
+		if (presentzipcode.getAttribute("value").isEmpty()) {
 			presentzipcode.sendKeys(generateRandomString(6));
 		} else {
 			System.out.println("Zipcode exists");
@@ -100,6 +104,33 @@ public class Step2_NS extends Step1_NS {
 
 		Thread.sleep(4000);
 
+		WebElement DeceasedFNerr = driver
+				.findElement(By.xpath("/html/body/div[5]/div/div/div[3]/div/form/div[3]/div[1]/div/p"));
+		if (DeceasedFNerr.isDisplayed()) {
+			departedFN.clear();
+			System.out.println("Deceased first name doesn't accept Numbers and Special Characters.");
+			departedFN.sendKeys(generateRandomString(5) + "'" + generateRandomString(1));
+		}
+		Thread.sleep(3000);
+		WebElement DeceasedLNerr = driver
+				.findElement(By.xpath("/html/body/div[5]/div/div/div[3]/div/form/div[3]/div[2]/div/p"));
+		if (DeceasedLNerr.isDisplayed()) {
+			System.out.println("Deceased Last name doesn't accept Numbers and Special Characters.");
+			departedLN.clear();
+			departedLN.sendKeys(generateRandomString(5));
+		}
+		Thread.sleep(3000);
+		dateofbirth.clear();
+		System.out.println("Date field not accepting special characters and Alphabets.");
+		dateofbirth.sendKeys(date + month + birthyear);
+
+		Thread.sleep(3000);
+		dateofdeath.clear();
+		dateofdeath.sendKeys(date + month + deathyear);
+
+		Thread.sleep(3000);
+		js.executeScript("arguments[0].click()", submits2);
+		Thread.sleep(3000);
 		String title = driver.getTitle();
 
 		if (title.equals("Step three")) {
