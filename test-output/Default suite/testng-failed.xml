@@ -5,6 +5,9 @@
     <classes>
       <class name="NotifyNOW.NotifyNOW_negative_scenarios.Step4_ns">
         <methods>
+          <include name="callmethod3"/>
+          <include name="callmethod2"/>
+          <include name="callmethod1"/>
           <include name="Browsersetup"/>
           <include name="callmethod4"/>
         </methods>

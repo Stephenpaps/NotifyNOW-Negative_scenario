@@ -89,6 +89,7 @@ public class Step2_NS extends Step1_NS {
 		} else {
 			System.out.println("Zipcode exists");
 		}
+		
 
 		Thread.sleep(3000);
 		WebElement formid = driver.findElement(By.xpath("//select[@id='identification_id']"));

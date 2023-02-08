@@ -1,5 +1,6 @@
 package NotifyNOW.NotifyNOW_negative_scenarios;
 
+import java.awt.AWTException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import org.openqa.selenium.JavascriptExecutor;
@@ -143,7 +144,7 @@ public class BaseClass_Negative_scenario {
 	}
 
 	@Test(priority = 4)
-	public void callmethod4() throws InterruptedException {
+	public void callmethod4() throws InterruptedException, AWTException {
 		Step4_ns s4 = new Step4_ns();
 		s4.step4();
 

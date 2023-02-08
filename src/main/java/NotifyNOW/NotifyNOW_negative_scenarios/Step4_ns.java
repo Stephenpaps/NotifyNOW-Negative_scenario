@@ -1,5 +1,9 @@
 package NotifyNOW.NotifyNOW_negative_scenarios;
 
+import java.awt.AWTException;
+import java.awt.RenderingHints.Key;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +17,7 @@ public class Step4_ns extends Step3_NS {
 	public String accntdf1 = generateRandomspecialchar(5);
 	public String accntdf2 = generateRandomNumber(5);
 
-	public void step4() throws InterruptedException {
+	public void step4() throws InterruptedException, AWTException {
 		Thread.sleep(3000);
 
 		WebElement submitstep4 = driver.findElement(By.xpath("//button[@type='submit']"));
@@ -71,7 +75,7 @@ public class Step4_ns extends Step3_NS {
 			Thread.sleep(2000);
 
 			WebElement gasmeterreading = driver.findElement(By
-					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[1]/input"));
+					.xpath("//input[@class='meterRead storePropertyDraft assetNumber custom-validate step-four-validation rounded-l font-sans py-2 font-medium block text-base input border border-gray-400 appearance-none rounded w-full focus:border-tdr-blue filled']"));
 			gasmeterreading.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
@@ -80,11 +84,16 @@ public class Step4_ns extends Step3_NS {
 					.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[3]/div[2]/input"));
 			gasmeterdate.sendKeys(
 					generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
+			
+//			Robot robot = new Robot();
+//			robot.keyPress(KeyEvent.VK_TAB);
+//			
+//			robot.keyRelease(KeyEvent.VK_TAB);
 
 			Thread.sleep(2000);
 
-			WebElement electricmeterreading = driver.findElement(
-					By.xpath("//*[@id='1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[4]/div[1]/input"));
+			WebElement electricmeterreading = driver.findElement(By.xpath
+					("//input[@class='meterRead assetNumber storePropertyDraft alphaNumericSymbolOnly custom-validate step-four-validation rounded-l font-sans py-2 font-medium block text-base input border border-gray-400 appearance-none rounded w-full focus:border-tdr-blue']"));
 			electricmeterreading.sendKeys(generateRandomNumber(2));
 
 			Thread.sleep(2000);
@@ -95,7 +104,6 @@ public class Step4_ns extends Step3_NS {
 					generateRandomspecialchar(2) + "-" + generateRandomString(2) + "-" + generateRandomNumber(4));
 
 			Thread.sleep(2000);
-
 		}
 		// if the utility is other than dual fuel
 		else {
@@ -139,7 +147,7 @@ public class Step4_ns extends Step3_NS {
 
 		Thread.sleep(3000);
 		WebElement errcnfmacct = driver
-				.findElement(By.xpath("//*[@id=\'1faf6ffa-aa6b-48a6-9e0a-fcdc9503df68\']/div/div[2]/div[2]/div[2]/p"));
+				.findElement(By.xpath("//p[@class='validation invalid-feedback text-xs font-sans mt-2 text-red leading-4']"));
 		if (errcnfmacct.isDisplayed()) {
 			accnt2.clear();
 			accnt2.sendKeys(accntdf);
